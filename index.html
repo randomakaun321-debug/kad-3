@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Kad Jemputan Kahwin</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #f9f5f2 0%, #fff 100%);
+      color: #464343;
+      height:auto;
+      width: 100vw;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .skrin {
+      width: 100%;
+      max-width: 1080px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 25px;
+      overflow: visible;
+      position: relative;
+    }
+
+    .muka-depan, .isi-kad{
+      display: none;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fade 0.8s ease;
+    }
+    
+
+    .muka-depan.active, .isi-kad.active {
+      display: flex;
+    }
+
+    .bunga {
+  position: fixed;
+  top: -50px;
+  font-size: 24px;
+  animation: jatuh 6s linear infinite;
+}
+
+@keyframes jatuh {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+    @keyframes fade {
+      from {opacity: 0; transform: scale(0.98);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    h1{
+      color: #5badf0;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #4f5050;
+      margin-bottom: 10px;
+    }
+
+    .tarikh {
+      background: #b56576;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+
+    .butang {
+      background: #0751a5;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .butang:hover {
+      background: #6d6875;
+    }
+
+    footer {
+      font-size: 14px;
+      color: #777;
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+    }
+
+    .jarak-atas {
+    margin-top: 50px;
+    } 
+
+    .jarak-atass {
+    margin-top: 25px;
+    } 
+
+  </style>
+</head>
+<body>
+
+  <div class="skrin">
+    <!-- Muka Depan -->
+    <div class="muka-depan active" id="mukaDepan">
+      <h1> jemputan Majlis makan" </h1>
+      <p>Tekan butang di bawah untuk membuka kad jemputan</p>
+      <button class="butang" onclick="bukaKad()">Buka Kad</button>
+    </div>
+
+    <!-- Isi Kad -->
+    <div class="isi-kad" id="isiKad">
+      <h2>بِسۡـــــــــمِ ٱللهِ ٱلرَّحۡـمَـٰنِ ٱلرَّحِـــــــيم</h2>
+      <p>Dengan rasa hormat dan penuh kesyukuran ke hadrat illahi, kami</p>
+      <h2 class="jarak-atass">Awang Kenit <br> & <br> Pipi Zola</h2>
+      <p>Bersama</p>
+      <h2>Boboiboy <br> & <br> Yaya</h2>
+      <p class="jarak-atass">ingin menjemput Dato’/Datin, Tuan/Puan, Encik/Cik dan sahabat-sahabat yang mengenali kami ke majlis perkahwinan anak kami dan pasangannya:</p>
+      <h2 class="jarak-atass"> Putera <br> & <br> puteri</h2>
+      <p class="jarak-atas">&#128197; <br>Tarikh <br> Sabtu, 31 Feb 2025<br>8 Zulhijjah 1447H</p>
+      <p class="jarak-atas">&#9200;<br> Atur Cara <br> Kehadiran Tetamu: 12.00pm <br> Ketibaan Pengantin: 1.00pm <br> Majlis Berakhir: 4.30pm</p>
+      <p class="jarak-atas">📍 Dewan Seri Mutiara<br>Bukit Mertajam, Pulau Pinang</p>
+  
+      
+      <a class="butang" href="https://share.google/jJVpXAoCTHOzuYlme" target="_self">Lihat Lokasi</a>
+
+       <p class="jarak-atas">“Dan di antara tanda kebesaran-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya,
+         dan Dia menjadikan di antara kamu kasih sayang dan rahmat.” – Surah Ar-Rum (30:21)</p>
+
+      <p class="jarak-atass"> Semoga dengan kehadiran anda dapat memeriahkan lagi majlis kami.</p>
+
+      <!-- Lagu -->
+      <!-- <audio id="lagu" src="lagu.mp3"></audio> -->
+       <audio id="lagu" src="Yiruma - River Flows in You.mp3"></audio>
+  
+    </div>
+  </div>
+
+  <script>
+    function bukaKad() {
+      document.getElementById('mukaDepan').classList.remove('active');
+      document.getElementById('isiKad').classList.add('active');
+
+       // buat bunga jatuh automatik
+    for (let i = 0; i < 10; i++) {
+      buatBunga(); }
+
+      // mainkan lagu kalau ada
+      // document.getElementById('lagu').play();
+     const lagu = document.getElementById('lagu');
+    lagu.currentTime = 24; // mula dari saat ke-24
+    lagu.volume = 0; // mula dengan volume 0
+    lagu.play();
+    
+    //set lagu tu berenti//
+    setTimeout(() => lagu.pause(), 100000)
+
+  
+
+    // fade-in volume secara perlahan
+    let naik = setInterval(() => {
+      if (lagu.volume < 1) {
+        lagu.volume += 0.05; // naikkan volume sedikit-sedikit
+      } else {
+        clearInterval(naik); // hentikan bila sampai 100%
+      }
+    }, 200); 
+
+    }
+    function buatBunga() {
+    const bunga = document.createElement('div');
+    bunga.classList.add('bunga');
+    bunga.innerHTML = '🌸'; // boleh tukar ke 💮 🍃 ❄️ dsb
+    bunga.style.left = Math.random() * 100 + 'vw';
+    bunga.style.animationDuration = (5 + Math.random() * 3) + 's';
+    document.body.appendChild(bunga);
+
+    // auto remove lepas jatuh
+    setInterval(() => {
+      bunga.remove();
+    }, 20000);
+  }
+  </script>
+
+</body>
+</html>
