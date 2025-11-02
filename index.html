@@ -154,7 +154,7 @@
       <p class="jarak-atas">📍 Dewan Seri Mutiara<br>Bukit Mertajam, Pulau Pinang</p>
   
       
-      <a class="butang" href="https://share.google/jJVpXAoCTHOzuYlme" target="_self">Lihat Lokasi</a>
+      <a class="butang" href="#"onclick="bukaLokasi()">Lihat Lokasi</a>
 
        <p class="jarak-atas">“Dan di antara tanda kebesaran-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya,
          dan Dia menjadikan di antara kamu kasih sayang dan rahmat.” – Surah Ar-Rum (30:21)</p>
@@ -172,6 +172,7 @@
     function bukaKad() {
       document.getElementById('mukaDepan').classList.remove('active');
       document.getElementById('isiKad').classList.add('active');
+      
 
        // buat bunga jatuh automatik
     for (let i = 0; i < 10; i++) {
@@ -183,6 +184,8 @@
     lagu.currentTime = 24; // mula dari saat ke-24
     lagu.volume = 0; // mula dengan volume 0
     lagu.play();
+
+    
     
     //set lagu tu berenti//
     setTimeout(() => lagu.pause(), 100000)
@@ -212,6 +215,16 @@
       bunga.remove();
     }, 20000);
   }
+
+  function bukaLokasi() {
+  const lagu = document.getElementById('lagu');
+  if (!lagu.paused) {
+    lagu.pause(); // hentikan lagu
+    lagu.currentTime = 0; // reset balik ke mula
+  }
+  // buka link lokasi
+  window.open("https://share.google/jJVpXAoCTHOzuYlme", "_blank");
+}
   </script>
 
 </body>
